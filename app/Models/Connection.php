@@ -12,16 +12,16 @@ class Connection extends Model
     protected $fillable = [
         'sender_id',
         'receiver_id',
-        'status'
+        'status',
     ];
 
 
-    public function senders()
+    public function sender()
     {
         return $this->hasMany(User::class,'id','sender_id');
     }
 
-    public function receivers()
+    public function receiver()
     {
         return $this->hasMany(User::class,'id','receiver_id');
     }

@@ -55,7 +55,7 @@ class HomeController extends Controller
             $userConnections=[];
             if($connection->receiver_id != $user->id){
                 $userConnections = Connection::where('sender_id', '!=', $user->id)->where('receiver_id', '!=', $user->id)->where(function($q) use($connection) {
-                    $q->where('receiver_id', $connection->receiver_id)>orWhere('sender_id', $connection->receiver_id);
+                    $q->where('receiver_id', $connection->receiver_id)->orWhere('sender_id', $connection->receiver_id);
                 })->where('status',2)->get();
             }
             if($connection->sender_id != $user->id){

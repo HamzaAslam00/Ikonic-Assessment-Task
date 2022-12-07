@@ -72,7 +72,7 @@
 </div>
 
 <script type="text/javascript">
-    var page_no = 1;  
+    var page_no = 1;
     var has_more = true;
     function loadMore(type,user_id){
       if(has_more){
@@ -108,20 +108,19 @@
                   }
                 }
             });   
+          }
+          $('#'+type).append(e);   
+            page_no= page_no+1;
+            if(res.last_page == page_no){
+              has_more =false;
+              $('#load_more_btn_parent_'+type).addClass('d-none');
             }
-            $('#'+type).append(e);   
-                  page_no= page_no+1;
-                  if(res.last_page == page_no){
-                    has_more =false;
-                    $('#load_more_btn_parent_'+type).addClass('d-none');
-                  }
           },
           error: function (textStatus, errorThrown) {
             $('#skeleton_'+type).addClass('d-none');
           }
         });
       }
-      
     }
 
     function handleAction(id){

@@ -138,11 +138,10 @@ class RequestController extends Controller
     public function store(Request $request)
     {
         $user = auth()->user();
-        $receiverId = $request->input('id');
-        // dd((Integer)$receiverId, $user->id);
+        $receiverId = (Integer)$request->input('id');
         $createRequest = Connection::create([
             'sender_id' => $user->id,
-            'receiver_id '=> (Integer)$receiverId,
+            'receiver_id' => $receiverId,
             'status' => 'requested'
         ]);
         return redirect()->route('home');

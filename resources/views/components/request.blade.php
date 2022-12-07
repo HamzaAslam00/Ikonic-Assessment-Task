@@ -1,7 +1,7 @@
-<div class="my-2 shadow text-white bg-dark p-1 mb-2" id="{{$mode}}">
+<div class="my-2 shadow text-white bg-dark p-1" id="{{$mode}}">
     @if ($mode == 'sent')
         @foreach($sendRequests as $sendRequest)
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mb-2">
                 <table class="ms-1">
                     <td class="align-middle">{{$sendRequest->receiver[0]->name}}</td>
                     <td class="align-middle"> - </td>
@@ -15,7 +15,7 @@
         @endforeach
     @else
         @foreach($receivedRequests as $receivedRequest)
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mb-2">
                 <table class="ms-1">
                     <td class="align-middle">{{$receivedRequest->sender[0]->name}}</td>
                     <td class="align-middle"> - </td>

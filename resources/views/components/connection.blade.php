@@ -1,7 +1,7 @@
-<div class="my-2 shadow text-white bg-dark p-1 mb-2" id="connections">
+<div class="my-2 shadow text-white bg-dark p-1" id="connections">
     @foreach($connections as $connection)
         @if(auth()->user()->id != $connection->sender[0]->id)
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mb-2">
                 <table class="ms-1">
                     <td class="align-middle">{{$connection->sender[0]->name}}</td>
                     <td class="align-middle"> - </td>
@@ -32,7 +32,7 @@
                 </div>
               </div>
         @else
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mb-2">
                 <table class="ms-1">
                     <td class="align-middle">{{$connection->receiver[0]->name}}</td>
                     <td class="align-middle"> - </td>
@@ -73,12 +73,10 @@
         page_numbers[id] = 1;
         have_more[id] = true;
       }
-      console.log(page_numbers[id])
-      console.log(user_id,id)
       if(have_more[id]){
           $('#connections_in_common_skeletons_'+id).removeClass('d-none');
           $.ajax({
-            url: '{{ route(requests.index) }}',
+            url: '{{ route('requests.index') }}',
             type: 'get',
             data: {
                 "page": page_numbers[id] + 1,
